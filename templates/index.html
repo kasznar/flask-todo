@@ -1,0 +1,28 @@
+<h1>Todo app</h1>
+
+<h2>Create Todo</h2>
+
+<form method="post" action="/create">
+    <label for="new-description">Description</label>
+    <br/>
+    <textarea name="new-description" id="new-description" required></textarea>
+    <br/>
+    <input type="submit" value="Save">
+</form>
+
+<h2>Todos</h2>
+<ul>
+    {% for todo in todos %}
+        <li>
+            <form action="/update/{{todo[0]}}" method="post">
+                 <textarea name="description" id="description" required>
+                     {{todo[2]}}
+                </textarea>
+                <input type="submit" value="Update">
+            </form>
+            <form action="/delete/{{todo[0]}}" method="post">
+                <input type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+            </form>
+        </li>
+    {% endfor %}
+</ul>
