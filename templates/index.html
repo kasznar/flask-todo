@@ -14,13 +14,13 @@
 <ul>
     {% for todo in todos %}
         <li>
-            <form action="/update/{{todo[0]}}" method="post">
+            <form action="/update/{{todo['id']}}" method="post">
                  <textarea name="description" id="description" required>
-                     {{todo[2]}}
+                     {{todo['description']}}
                 </textarea>
                 <input type="submit" value="Update">
             </form>
-            <form action="/delete/{{todo[0]}}" method="post">
+            <form action="/delete/{{todo['id']}}" method="post">
                 <input type="submit" value="Delete" onclick="return confirm('Are you sure?');">
             </form>
         </li>
